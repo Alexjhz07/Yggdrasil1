@@ -2,18 +2,18 @@
 package TeamProject;
 import java.util.Scanner; //Import Scanner 
 
-public class Yggdrasil {
+public class Yggdrasil{
     
     static String in, name; //UNIVERSAL VARIABLES
-    static int health = 200, run, damage, coin, mobdrop, mobhp, mobdmg, rng, lordhp = 2000, lorddmg; //UNIVERSAL NUMBERS
+    static int health = 200, damage, smith, statatk, coin, mobdrop, mobhp, mobdmg, rng, lordhp = 2000, lorddmg; //UNIVERSAL NUMBERS
     
     public static void main(String [] args){ //Done this way so that I can go to any method I want for debugging.
-    explore();
+    admin();
     }
     
     public static void start(){ //Starting Sequence
         Scanner input = new Scanner(System.in); 
-        System.out.println("Well, hello there friend! I just summoned you to another world!\nThere's been an incident, and this world needs your help.\nAre you ready to begin your adventure?\n(1)Yes! (2)No! (3)What are you talking about?");
+        System.out.println("Well, hello there friend! I just summoned you a moment ago!\nThere's been an incident, and this world needs your help.\nAre you ready to begin your adventure?\n(1)Yes! (2)No! (3)What are you talking about?");
         in = input.nextLine();
 
         if(in.equalsIgnoreCase("yes") || in.equalsIgnoreCase("ye") || in.equalsIgnoreCase("y") || in.equalsIgnoreCase("1")){ //Answer Yes
@@ -71,9 +71,9 @@ public class Yggdrasil {
     }
     
     public static void story3(){ //Storyline 1
-        System.out.println("\nThe demon lord resides in his castle.\nYou're free to enter it at anytime and damage the demon lord.\nAny damage done is saved, and you can escape with a guarantee.\nSo, our goal is to hit the mean guy a few times, run away to heal, then return and hit him some more.\nYou're free to enter it at anytime and damage the demon lord.\nAny damage done is saved, and you can escape with a guarantee.\nSo, our goal is to hit the mean guy a few times, run away to heal, then return and hit him some more.\nYou're free to head back to town at anytime and get upgrades for coins.\nMan, this is already getting me excited!\n");
+        System.out.println("\nThe demon lord resides in his castle.\nYou're free to enter it at anytime and damage the demon lord.\nAny damage done is saved, and you can escape with a guarantee.\nSo, our goal is to hit the mean guy a few times, run away to heal, then return and hit him some more.\nYou're free to head back to town at anytime and get upgrades for coins.\nMan, this is already getting me excited!\n");
         try{
-            Thread.sleep(5000);
+            Thread.sleep(10000);
             forestTutorialMessage();
         }
         catch(InterruptedException b){
@@ -142,15 +142,15 @@ public class Yggdrasil {
         in = input.nextLine();
         
         if(in.equalsIgnoreCase("1") || in.equalsIgnoreCase("attack") || in.equalsIgnoreCase("a")){ //Answer Attack
-            damage = 10 + (int)(6*Math.random());
+            damage = 10 + (int)(smith*Math.random());
             System.out.println("\nYou did " + damage + " damage to the goblin.");
             mobdmg = 5 + (int)(6*Math.random());
             System.out.println("You recieved " + mobdmg + " damage from the goblin.");
             goblin();
             
         }else if(in.equalsIgnoreCase("2") || in.equalsIgnoreCase("run") || in.equalsIgnoreCase("r")){ //Answer Run
-            run = 1 + (int)(3*Math.random());
-            if(run == 1){
+            rng = 1 + (int)(3*Math.random());
+            if(rng == 1){
             System.out.println("\nYou ran away back to town.");
             explore();
             }else{
@@ -206,15 +206,15 @@ public class Yggdrasil {
         in = input.nextLine();
         
         if(in.equalsIgnoreCase("1") || in.equalsIgnoreCase("attack") || in.equalsIgnoreCase("a")){ //Answer Attack
-            damage = 10 + (int)(6*Math.random());
+            damage = 10 + (int)(smith*Math.random());
             System.out.println("\nYou did " + damage + " damage to the demon.");
             mobdmg = 10 + (int)(6*Math.random());
             System.out.println("You recieved " + mobdmg + " damage from the demon.");
             demon();
             
         }else if(in.equalsIgnoreCase("2") || in.equalsIgnoreCase("run") || in.equalsIgnoreCase("r")){ //Answer Run
-            run = 1 + (int)(4*Math.random());
-            if(run == 1){
+            rng = 1 + (int)(4*Math.random());
+            if(rng == 1){
             System.out.println("\nYou ran away.");
             explore();
             }else{
@@ -330,15 +330,15 @@ public class Yggdrasil {
         in = input.nextLine();
         
         if(in.equalsIgnoreCase("1") || in.equalsIgnoreCase("attack") || in.equalsIgnoreCase("a")){ //Answer Attack
-            damage = 10 + (int)(6*Math.random());
+            damage = 10 + (int)(smith*Math.random());
             System.out.println("\nYou swing your sword at the dragon, doing " + damage + " damage to the dragon.");
             mobdmg = 40 + (int)(6*Math.random());
             System.out.println("You recieved " + mobdmg + " damage from the dragon.");
             dragon();
             
         }else if(in.equalsIgnoreCase("2") || in.equalsIgnoreCase("run") || in.equalsIgnoreCase("r")){ //Answer Run
-            run = 1 + (int)(2*Math.random());
-            if(run == 1){
+            rng = 1 + (int)(2*Math.random());
+            if(rng == 1){
             System.out.println("\nThe dragon loses interest in you.\nYou run away.");
             explore();
             }else{
@@ -406,7 +406,7 @@ public class Yggdrasil {
         }
         
         else if(in.equalsIgnoreCase("3")){ //Demon lord
-            System.out.println("\nYou march towards the demon lord's domain.\n");            
+            System.out.println("\nYou march toward the demon lord's domain.\n");            
             try{
             Thread.sleep(3000);
             demonlordEncounter();
@@ -455,7 +455,7 @@ public class Yggdrasil {
         }
         
         else if(in.equalsIgnoreCase("3")){ //Blacksmith
-            
+            smith();
         }
         
         else if(in.equalsIgnoreCase("4")){ //Wizard
@@ -483,12 +483,12 @@ public class Yggdrasil {
         System.out.println("\n-DOCTOR AUBERT-\nWould you like to heal back to full health for 40 coins?\n(1)Yes (2)No");
             in = input.nextLine();
             if(in.equalsIgnoreCase("1")){
-                if(coin >= 40){
+                if(coin >= 40 && health < 200){
                     health = 200;
                     coin = coin - 40;
-                    System.out.println("\nYou pay 40 coins to the local doctor. She heals you back to full health.\nYour health is now " + health + ".\nYou have " + coin + " coins remaining.\n");
+                    System.out.println("\nYou pay 40 coins to Aubert. She heals you back to full health.\nYour health is now " + health + ".\nYou have " + coin + " coins remaining.\n");
                     try{
-                    Thread.sleep(3000);
+                    Thread.sleep(2000);
                     town();
                     }
                     catch(InterruptedException b){
@@ -519,6 +519,43 @@ public class Yggdrasil {
             }else{
                 System.out.println("\nInvalid response\n");
                 doctor();
+            }
+    }
+    
+    public static void smith(){
+        Scanner input = new Scanner(System.in); 
+        
+        System.out.println("\n-BLACKSMITH KUROBE-\nHello There!\nWould you like your sword reforged for 30 coins?\nYour maximum damage will increase by 10\n(1)Yes (2)No");
+            in = input.nextLine();
+            if(in.equalsIgnoreCase("1")){
+                if(coin >= 30){
+                    smith = smith + 10;
+                    coin = coin - 30;
+                    statatk = smith + 10;
+                    System.out.println("\nYou pay 30 coins to Kurobe. Your sword has been refined.\nYour maximum damage is now " + statatk + ".\nYou have " + coin + " coins remaining.\n");
+                    try{
+                    Thread.sleep(2000);
+                    town();
+                    }
+                    catch(InterruptedException b){
+                    town();
+                    }
+                }
+                else{
+                    System.out.println("\nYou do not have enough coins.\n");
+                    try{
+                    Thread.sleep(2000);
+                    town();
+                    }
+                    catch(InterruptedException b){
+                    town();
+                    }
+                }
+            }else if(in.equalsIgnoreCase("2")){
+                town();
+            }else{
+                System.out.println("\nInvalid response\n");
+                smith();
             }
     }
     
@@ -574,25 +611,25 @@ public class Yggdrasil {
         in = input.nextLine();
         
         if(in.equalsIgnoreCase("1") || in.equalsIgnoreCase("attack") || in.equalsIgnoreCase("a")){ //Answer Attack
-            damage = 10 + (int)(6*Math.random());
+            damage = 10 + (int)(smith*Math.random());
             System.out.println("\nYou did " + damage + " damage to the demonlord.");
             rng = (int)(4*Math.random());
             switch(rng){
                 case 0:
                     System.out.println("\nThe demon lord shoots a blade of darkness your way.");
-                    lorddmg = 20 + (int)(30*Math.random());
+                    lorddmg = 20 + (int)(31*Math.random());
                     break;
                 case 1:
                     System.out.println("\nThe grounds turn into flames and fire engulfs you.\nYou escape, a bit scathed.");
-                    lorddmg = 20 + (int)(45*Math.random());
+                    lorddmg = 20 + (int)(46*Math.random());
                     break;
                 case 2:
                     System.out.println("\nA volley of dark projectiles launch your way.\nMost sail past your head, but a few hit your body.");
-                    lorddmg = 20 + (int)(50*Math.random());
+                    lorddmg = 20 + (int)(51*Math.random());
                     break;
                 case 3:
                     System.out.println("\nThe demon lord encapsulates a ball of blood with flames above his head.\nIt explodes, releasing a boiling, bloody mist.");
-                    lorddmg = 20 + (int)(55*Math.random());
+                    lorddmg = 20 + (int)(56*Math.random());
                     break;
             }
             System.out.println("You recieved " + lorddmg + " damage from the demonlord.");
@@ -611,5 +648,11 @@ public class Yggdrasil {
     public static void death(){ //Death Sequence
         System.out.println("\n-YOUR HEALTH HAS REACHED 0-\n\nNo! " + name + "!");
     }
+    
+    public static void admin(){
+        coin = 10000;
+        smith = 100;
+        explore();
+    }    
     
 }
